@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+		PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+		"http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<!-- classPathEntry:数据库的JDBC驱动的jar包地址 -->
+	<classPathEntry location="D:\javaTools\jar\mysql-connector-java-5.1.5-bin.jar" />
+	<context id="MySqlTables" targetRuntime="MyBatis3">
+		<commentGenerator>
+			<!-- 是否去除自动生成的注释 true：是；false:否 -->
+			<property name="suppressAllComments" value="true" />
+			<!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+		</commentGenerator>
+		<!-- <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver" connectionURL="jdbc:oracle:thin:@localhost:1521:orcl" 
+			userId="jack" password="8888"> </jdbcConnection> -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+						connectionURL="jdbc:mysql://localhost:3306/easybuy" userId="root"
+						password="123456"/>
+		<!-- 是否将JDBC DECIMAL 和 NUMERIC 类型解析为 java.math.BigDecimal true:转换为BigDecimal；false：转换为Integer -->
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!-- 自动生成模型层代码(实体类) targetPackage:实体类文件所在的包名 targetProject:实体类文件存放的物理路径 -->
+		<javaModelGenerator targetPackage="com.pojo"
+							targetProject="./src/main/java">
+
+			<!-- enableSubPackages:是否让schema(数据库用户名)作为包的后缀 -->
+			<property name="enableSubPackages" value="false" />
+
+			<!-- 从数据库返回的值被清理前后的空格 -->
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<!-- 自动生成实现业务接口的xml映射文件 enableSubPackages:是否需要将数据库用户名追加到包名最后 -->
+		<sqlMapGenerator targetPackage="com.mapper"
+						 targetProject="./src/main/resources">
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+
+		<!-- 自动生成业务接口代码 -->
+		<javaClientGenerator type="XMLMAPPER"
+							 targetPackage="com.dao" targetProject="./src/main/java">
+			<property name="enableSubPackages" value="false" />
+		</javaClientGenerator>
+
+		<!-- tableName:用于自动生成代码的数据库表； domainObjectName:对应于数据库表的javaBean类名 schema:数据库用户名 
+			tableName:表名 domainObjectName:实体类名 -->
+		<!--<table  tableName="easybuy_comment" domainObjectName="Comment"
+				enableCountByExample="false" enableUpdateByExample="false"
+				enableDeleteByExample="false" enableSelectByExample="false"
+				selectByExampleQueryId="false"></table>
+		&lt;!&ndash; ctrl+alt+向下方向键 &ndash;&gt;
+		<table  tableName="easybuy_news" domainObjectName="News"
+				enableCountByExample="false" enableUpdateByExample="false"
+				enableDeleteByExample="false" enableSelectByExample="false"
+				selectByExampleQueryId="false"></table>
+		<table  tableName="easybuy_order" domainObjectName="Order"
+				enableCountByExample="false" enableUpdateByExample="false"
+				enableDeleteByExample="false" enableSelectByExample="false"
+				selectByExampleQueryId="false"></table>
+		<table  tableName="easybuy_order_detail" domainObjectName="OrderDetail"
+				enableCountByExample="false" enableUpdateByExample="false"
+				enableDeleteByExample="false" enableSelectByExample="false"
+				selectByExampleQueryId="false"></table>
+		<table  tableName="easybuy_product" domainObjectName="Product"
+				enableCountByExample="false" enableUpdateByExample="false"
+				enableDeleteByExample="false" enableSelectByExample="false"
+				selectByExampleQueryId="false"></table>
+		<table  tableName="easybuy_product_category" domainObjectName="ProductCategory"
+				enableCountByExample="false" enableUpdateByExample="false"
+				enableDeleteByExample="false" enableSelectByExample="false"
+				selectByExampleQueryId="false"></table>
+		<table  tableName="easybuy_user" domainObjectName="User"
+				enableCountByExample="false" enableUpdateByExample="false"
+				enableDeleteByExample="false" enableSelectByExample="false"
+				selectByExampleQueryId="false"></table>-->
+		<table  tableName="easybuy_browse" domainObjectName="Browse"
+				enableCountByExample="false" enableUpdateByExample="false"
+				enableDeleteByExample="false" enableSelectByExample="false"
+				selectByExampleQueryId="false"></table>
+	</context>
+</generatorConfiguration>

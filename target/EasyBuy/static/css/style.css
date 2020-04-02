@@ -1,0 +1,15 @@
+/*reset*/
+body{font-family: "microsoft yahei","微软雅黑";}
+body,ul,li,ol,img{margin: 0;padding: 0;}
+li{list-style: none;}
+
+body{width:100%;height: auto;margin: 0 auto;}
+body>h5{margin-left: 20px;}
+body>div{margin-left: 20px;}
+
+/*example*/
+
+.example2 {margin: 0 auto;}
+.example2 ol{position:relative;width: 80px;height: 20px;top:-30px;left:60px;}
+.example2 ol li{float:left;width: 10px;height: 10px;margin: 5px;background: #fff;}
+.example2 ol li.seleted{background: #1AA4CA;}

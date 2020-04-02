@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+	           http://www.springframework.org/schema/context
+	          http://www.springframework.org/schema/context/spring-context-3.2.xsd
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+			
+			<bean  class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
+			    <property name="location" value="classpath:jdbc.properties"></property> 
+			</bean>
+			
+			<!-- 读取数据源 -->
+			<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+			    <property name="driverClassName" value="${driver}"></property>
+			    <property name="url" value="jdbc:mysql://localhost:3306/easybuy"></property>
+			    <property name="username" value="${uname}"></property>
+			    <property name="password" value="${upwd}"></property>
+			
+			</bean>
+			<!-- 配置sqlSessionFactory -->
+			<bean id="SqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+			    <property name="dataSource" ref="dataSource"></property>
+			    <property name="mapperLocations" value="classpath:com/mapper/*.xml"></property>
+			    <property name="typeAliasesPackage" value="com.pojo"></property>
+			</bean>
+			
+			<!-- 扫描dao层接口 -->
+			<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+			<!-- <property name="sqlSessionFactoryBeanName" ref="SqlSessionFactory"></property> -->
+			    <property name="basePackage" value="com.dao"></property>
+			</bean>
+			<context:component-scan base-package="com"></context:component-scan>
+</beans>
